@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7325388532263747238}
   - component: {fileID: 6425214782659920431}
   - component: {fileID: 2632769821675285647}
+  - component: {fileID: 1461877578237152892}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -98,19 +99,19 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 375149051444360722}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &5339828976401710708
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -179,23 +180,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2c23abb33a47c549b5532750d49b298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  collisionOffset: 0.5
-  movementFilter:
-    useTriggers: 0
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 1
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  swordAttack: {fileID: 3784634961830686409}
+  moveSpeed: 70
+  maxSpeed: 1
+  idleFriction: 5
+  swordHitBox: {fileID: 2908238752543770547}
 --- !u!95 &2632769821675285647
 Animator:
   serializedVersion: 5
@@ -217,6 +205,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1461877578237152892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 375149051444360722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c24cfdcca6c33824292a71f5011c1566, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthText: {fileID: 3815876321668910240, guid: 2e6125308c2094d42918bad348abbf67, type: 3}
+  disableSimulation: 1
+  CanTurnInvincible: 1
+  invincibilityTime: 1
 --- !u!1 &2908238752543770547
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6010465206485037061}
   - component: {fileID: 8230984015916089700}
-  - component: {fileID: 3784634961830686409}
+  - component: {fileID: 6883831963163862491}
   m_Layer: 0
   m_Name: SwordHitBox
   m_TagString: Untagged
@@ -260,10 +264,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0000000037252903, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -274,9 +278,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15007488, y: 0.13000329}
+  m_Size: {x: 0.1500749, y: 0.13000329}
   m_EdgeRadius: 0
---- !u!114 &3784634961830686409
+--- !u!114 &6883831963163862491
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -285,8 +289,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2908238752543770547}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1660b24cfa07bd4998170ff9e264bed, type: 3}
+  m_Script: {fileID: 11500000, guid: 04f2b5fe2cf2a614b9fea88a4f177f7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swordDemage: 1
+  knockbackForce: 10
   swordCollider: {fileID: 8230984015916089700}
-  demage: 3
+  faceRight: {x: 0.095, y: -0.051, z: 0}
+  faceLeft: {x: -0.095, y: -0.051, z: 0}
